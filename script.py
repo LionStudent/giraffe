@@ -1,34 +1,46 @@
 import matplotlib
 
 import matplotlib.pyplot as plt
-
+import math
 
 matplotlib.use('Agg')
-xAxis = list(range(-20,20))
+
+xAxis = list(range(0,64))
+
+xTenth = []
+
+for x in xAxis:
+
+  xTenth.append(x*0.1)
 
 
-def parabola(xValues):
+xAxis = xTenth
+
+def sine(xValues):
 
   yValues = []
 
   for x in xValues:
 
-    y = x*x
+    #y = x*x
+    y = math.sin(x)
 
     yValues.append(y)
 
   return yValues
 
 
-yAxis = parabola(xAxis)
-sliceXAxis  = xAxis[5:35]
+yAxis = sine(xAxis)
+sliceXAxis  = xAxis[:]
 
-sliceYAxis  = yAxis[5:35]
-style = 'ro'
+sliceYAxis  = yAxis[:]
+style = 'b-'
+
+
 
 plt.plot(sliceXAxis , sliceYAxis , style)
 
-plt.axis([-10, 10, 0, 100])
+plt.axis([0,6.4,-1,1])
 
 filename = 'graph.png'
 
